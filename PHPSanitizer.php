@@ -6,8 +6,6 @@
  * Time: 3:48 PM
  */
 
-require_once(dirname(__FILE__).'/SanitizerFactory.php');
-
 class PHPSanitizer {
     const PARANOID = 1;
     const SQL = 2;

@@ -6,6 +6,8 @@
  * Time: 1:07 PM
  */
 
+require_once(dirname(__FILE__).'/ISanitizer.php');
+
 abstract class AbstractSanitizer implements ISanitizer{
 
     protected $register_globals;

@@ -6,6 +6,9 @@
  * Time: 2:23 PM
  */
 
+require_once(dirname(__FILE__).'/AbstractSanitizer.php');
+require_once(dirname(__FILE__).'/ISanitizer.php');
+
 class SanitizerInt extends AbstractSanitizer implements ISanitizer{
     private $pattern = '/^[0-9]/g';
     private $replacement = '';

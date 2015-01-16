@@ -11,7 +11,7 @@ class SanitizerSystem extends AbstractSanitizer implements ISanitizer{
     private $replacement = array('', '\\\$');
 
     public function validate($string){
-        return ($string === $this->cleanup($string)); //????
+        return ((preg_match_all($this->pattern[0],$string)===0) || (preg_match_all($this->pattern[1],$string)===0));
     }
 
     public function cleanup($string){

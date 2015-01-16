@@ -15,9 +15,9 @@ class ClassLoader {
     }
 
     public static function Load($strObjectName, $base_path=null) {
-        if(class_exists($strObjectName) === false) {
-            return false;
-        }
+        #if(class_exists($strObjectName) === false) {
+        #    return false;
+        #}
 
         $base_path = (is_null($base_path)) ? dirname(__FILE__) : $base_path;
         $strObjectFilePath = $base_path . $strObjectName . '.php';
@@ -26,6 +26,6 @@ class ClassLoader {
             return false;
         }
 
-        require($strObjectFilePath);
+        require_once($strObjectFilePath);
     }
 }
