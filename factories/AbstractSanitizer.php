@@ -43,6 +43,14 @@ abstract class AbstractSanitizer implements ISanitizer{
             "SOZsozYYuAAAAAAACEEEEIIIIDNOOOOOOUUUUYsaaaaaaaceeeeiiiionoooooouuuuyy");
     }
 
+    function is64Bits() {
+        return strlen(decbin(~0)) == 64;
+    }
+
+    function is32Bits() {
+        return strlen(decbin(~0)) == 32;
+    }
+
     public function validate($string){
 
     }
