@@ -55,3 +55,30 @@ $sanitizer->setType(PHPSanitizer::SQL);
 pp('SQL', $str_valid, $str_invalid, $sanitizer->cleanup($str_valid),$sanitizer->cleanup($str_invalid));
 
 echo "\n\n";
+// HTML case
+$str_invalid = 'I have lots of <a href="http://my.site.com">links</a> on this <a href="http://my.site.com">page</a> that I want to <a href="http://my.site.com">find</a> the positions.';
+$str_valid = htmlentities($str_invalid, ENT_QUOTES);
+
+$sanitizer->setType(PHPSanitizer::HTML);
+
+pp('HTML', $str_valid, $str_invalid, $sanitizer->cleanup($str_valid),$sanitizer->cleanup($str_invalid));
+
+echo "\n\n";
+// INT case
+$str_valid = "9223372036854775807";
+$str_invalid = '-386.1e';
+
+$sanitizer->setType(PHPSanitizer::INT);
+
+pp('INT', $str_valid, $str_invalid, $sanitizer->cleanup($str_valid),$sanitizer->cleanup($str_invalid));
+
+echo "\n\n";
+// FLOAT case
+$str_valid = "9223372036.854775807e-20";
+$str_invalid = '1.8e307';
+
+$sanitizer->setType(PHPSanitizer::FLOAT);
+
+pp('FLOAT', $str_valid, $str_invalid, $sanitizer->cleanup($str_valid),$sanitizer->cleanup($str_invalid));
+
+echo "\n\n";
