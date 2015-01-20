@@ -37,14 +37,14 @@ class PHPSanitizer {
         return $this->sanitizer->cleanup($string);
     }
 
-    public function setType($type=PHPSanitizer::PARANOID, $custom_name=null){
+    public function setType($type=PHPSanitizer::PARANOID, $custom_name=null, $base_path=null){
         if($type == PHPSanitizer::CUSTOM && is_null($custom_name)){
             throw new InvalidCustomNameException("Custom type required custom name.");
         }
         $this->type = $type;
         $this->custom_name = $custom_name;
         try{
-            $this->sanitizer = SanitizerFactory::build($this->type,$this->custom_name);
+            $this->sanitizer = SanitizerFactory::build($this->type,$this->custom_name, $base_path);
         }catch (Exception $e){
             throw $e;
         }
